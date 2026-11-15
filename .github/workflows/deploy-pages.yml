@@ -4,8 +4,8 @@ name: Deploy static site to GitHub Pages
 # which serves over HTTPS on a *.github.io domain (free).
 
 on:
-  push:
-    branches: [main]
+  # Push trigger disabled: sandbox publishes via tools/publish-sandbox.sh (gh-pages branch)
+  # because the artifact handoff in deploy-pages@v4 failed repeatedly on 2026-11-15.
   workflow_dispatch:
 
 permissions:
