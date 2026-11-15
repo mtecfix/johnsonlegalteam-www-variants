@@ -58,3 +58,17 @@ body.ab-v-d .ab-badge{bottom:76px}
   body.ab-v-d .ab-stickybar{display:none}
   body.ab-v-d .ab-badge{bottom:8px}
 }
+
+/* ---------- Variant B: mirrored layout (desktop >= 992px; phones keep the normal stacked layout) ----------
+ * Header: navigation menu + search move to the left, logo moves to the right.
+ * Service pages: the "Michigan Laws" sidebar moves from the left column to the right column. */
+@media (min-width:992px){
+  body.ab-v-b .site-header .navbar{flex-direction:row-reverse}
+  body.ab-v-b .site-header .navbar-brand{margin-right:0;margin-left:1rem}
+  body.ab-v-b .site-header .navbar-nav.me-auto{margin-right:0 !important;margin-left:0 !important}
+  body.ab-v-b .site-header .navbar-collapse{justify-content:space-between}
+  body.ab-v-b .site-header .navbar-collapse > .d-lg-block{order:-1;margin-right:1rem}
+  body.ab-v-b .row > .col-lg-3{order:2}
+  body.ab-v-b .row > .col-lg-9{order:1}
+  body.ab-v-b .law-sidebar .list-group-item:hover{transform:translateX(-5px)}
+}

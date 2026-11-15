@@ -135,7 +135,7 @@ def main():
 <meta name="robots" content="noindex, nofollow"><title>A/B/C/D Variants (sandbox)</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"></head>
 <body class="container py-5"><h1>A/B/C/D variants (sandbox)</h1>
-<p class="text-muted">A = current page (control). B = call-first. C = guided steps in a teal/amber color scheme. D = mobile-only: compact top CTA + sticky call/message bar (view on a phone or a narrow window).</p>
+<p class="text-muted">A = current page (control). B = call-first with mirrored layout (menu left, logo right, sidebar right). C = guided steps in a teal/amber color scheme. D = mobile-only: compact top CTA + sticky call/message bar (view on a phone or a narrow window).</p>
 <table class="table table-bordered w-auto"><thead><tr><th>Page</th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody>
 {rows}
 </tbody></table></body></html>
