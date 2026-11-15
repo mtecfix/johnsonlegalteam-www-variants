@@ -70,7 +70,8 @@ def head_and_body(html, page, v):
     if n != 1: raise SystemExit(f"{page}: </head> not found")
     html, n = re.subn(r'<body>', f'<body class="ab-v-{v}">', html, count=1)
     if n != 1: raise SystemExit(f"{page}: plain <body> not found")
-    tail = f'    <div class="ab-badge">Variant {v.upper()}</div>\n'
+    label = 'Variant D (mobile only)' if v == 'd' else f'Variant {v.upper()}'
+    tail = f'    <div class="ab-badge">{label}</div>\n'
     if v == "d": tail += STICKY + "\n"
     tail += '    <script src="ab-track.js"></script>\n</body>'
     html, n = re.subn(r'</body>', tail, html, count=1)
@@ -134,7 +135,7 @@ def main():
 <meta name="robots" content="noindex, nofollow"><title>A/B/C/D Variants (sandbox)</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"></head>
 <body class="container py-5"><h1>A/B/C/D variants (sandbox)</h1>
-<p class="text-muted">A = current page (control). B = call-first. C = guided steps. D = compact top CTA + sticky call/message bar.</p>
+<p class="text-muted">A = current page (control). B = call-first. C = guided steps in a teal/amber color scheme. D = mobile-only: compact top CTA + sticky call/message bar (view on a phone or a narrow window).</p>
 <table class="table table-bordered w-auto"><thead><tr><th>Page</th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody>
 {rows}
 </tbody></table></body></html>

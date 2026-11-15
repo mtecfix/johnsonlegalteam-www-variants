@@ -11,6 +11,7 @@
   var pageMeta = document.querySelector('meta[name="ab-page"]');
   var variant = variantMeta ? variantMeta.content : 'unknown';
   var page = pageMeta ? pageMeta.content : location.pathname;
+  var device = window.matchMedia && window.matchMedia('(max-width: 767.98px)').matches ? 'mobile' : 'desktop';
 
   // UI controls that are not calls to action.
   var IGNORE = '.accordion-button, .carousel-control-prev, .carousel-control-next, .navbar-toggler, .search-btn, .ab-badge';
@@ -27,7 +28,7 @@
   }
 
   function emit(name, detail) {
-    var evt = { event: name, variant: variant, page: page, ts: new Date().toISOString() };
+    var evt = { event: name, variant: variant, device: device, page: page, ts: new Date().toISOString() };
     for (var k in detail) { if (Object.prototype.hasOwnProperty.call(detail, k)) evt[k] = detail[k]; }
     try {
       window.dataLayer = window.dataLayer || [];
