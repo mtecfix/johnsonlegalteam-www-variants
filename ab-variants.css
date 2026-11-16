@@ -83,3 +83,8 @@ body.ab-v-d .ab-badge{bottom:76px}
   /* D: lift the chat bubble (inline-positioned by chat-widget.js) above the sticky call/message bar. */
   body.ab-v-d #legal-chat-widget{bottom:84px !important}
 }
+@media (min-width:992px) and (max-width:1199.98px){
+  /* B on narrow desktops: shrink the search input so menu + search + logo fit without overflowing. */
+  body.ab-v-b .site-header .search-input{width:110px;min-width:0}
+  body.ab-v-b .site-header .navbar-collapse > .d-lg-block{margin-right:.75rem}
+}
