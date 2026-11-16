@@ -83,3 +83,34 @@ body.ab-v-d .ab-badge{bottom:76px}
   /* D: lift the chat bubble (inline-positioned by chat-widget.js) above the sticky call/message bar. */
   body.ab-v-d #legal-chat-widget{bottom:84px !important}
 }
+
+/* ---------- Variant C: typography + component colors (teal/amber) ----------
+ * Bootstrap 5.1 builds bg-*/text-* utilities from --bs-*-rgb, so overriding those re-themes
+ * badges, tinted boxes and status text. Links and JS-injected widgets need explicit rules. */
+body.ab-v-c{
+  --primary-text:#1e3a37;--secondary-text:#36524f;--accent-tertiary:#b45309;
+  --bs-primary-rgb:17,94,89;--bs-info-rgb:13,148,136;--bs-success-rgb:4,120,87;--bs-warning-rgb:180,83,9;
+  color:#1e3a37;
+}
+body.ab-v-c h1,body.ab-v-c h2,body.ab-v-c h3,body.ab-v-c h4,body.ab-v-c h5,body.ab-v-c h6{color:#115e59}
+body.ab-v-c .lead,body.ab-v-c p{color:#1e3a37}
+body.ab-v-c a{color:#0f766e}
+body.ab-v-c .text-muted{color:#4b6b67 !important}
+body.ab-v-c .accordion-button{color:#134e4a}
+body.ab-v-c .accordion-button:focus{box-shadow:0 0 0 .25rem rgba(15,118,110,.25);border-color:#5eead4}
+body.ab-v-c .law-sidebar .statute-link{color:#4b6b67}
+/* Text inside dark/tinted containers stays light. */
+body.ab-v-c .site-header a,body.ab-v-c .site-header p,body.ab-v-c .site-header h5,
+body.ab-v-c .bg-primary:not(.bg-opacity-10) *,body.ab-v-c .text-white,body.ab-v-c .text-white *,
+body.ab-v-c .contact-widget *,body.ab-v-c .page-header p,body.ab-v-c .law-sidebar .card-header h5{color:#fff}
+body.ab-v-c .page-header h1,body.ab-v-c .contact-widget h2{color:#fcd34d !important}
+body.ab-v-c .law-sidebar .list-group-item:hover h5{color:#fff}
+body.ab-v-c .btn-primary,body.ab-v-c .btn-primary:hover{color:#fff}
+body.ab-v-c .carousel-indicators [data-bs-target]{background-color:#fcd34d}
+/* chat-widget.js (inline styles) */
+body.ab-v-c #chat-button,body.ab-v-c #chat-window > div:first-child{background:linear-gradient(135deg,#0f766e 0%,#115e59 100%) !important}
+body.ab-v-c #send-button{background:#0f766e !important}
+/* search.js results dropdown (inline styles) */
+body.ab-v-c .search-results{border-color:#b45309 !important}
+body.ab-v-c .search-result-item{color:#115e59 !important}
+body.ab-v-c .search-result-item > div:first-child{color:#b45309 !important}
