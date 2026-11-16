@@ -72,3 +72,14 @@ body.ab-v-d .ab-badge{bottom:76px}
   body.ab-v-b .row > .col-lg-9{order:1}
   body.ab-v-b .law-sidebar .list-group-item:hover{transform:translateX(-5px)}
 }
+
+/* Layout fixes found in screenshot review (2026-11-15) */
+@media (min-width:992px){
+  /* B: site .search-bar caps at 200px, so its button overflowed into "Login" once the bar moved left. */
+  body.ab-v-b .site-header .search-bar{max-width:none}
+  body.ab-v-b .site-header .navbar-collapse > .d-lg-block{margin-right:1.5rem}
+}
+@media (max-width:767.98px){
+  /* D: lift the chat bubble (inline-positioned by chat-widget.js) above the sticky call/message bar. */
+  body.ab-v-d #legal-chat-widget{bottom:84px !important}
+}
