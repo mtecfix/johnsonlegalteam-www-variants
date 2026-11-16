@@ -114,3 +114,8 @@ body.ab-v-c #send-button{background:#0f766e !important}
 body.ab-v-c .search-results{border-color:#b45309 !important}
 body.ab-v-c .search-result-item{color:#115e59 !important}
 body.ab-v-c .search-result-item > div:first-child{color:#b45309 !important}
+
+/* ---------- Variant C: contrast fixes (2026-11-15 review) ---------- */
+body.ab-v-c .bg-primary:not(.bg-opacity-10){background:linear-gradient(135deg,#115e59 0%,#0f766e 100%) !important}
+body.ab-v-c .bg-primary:not(.bg-opacity-10) h3,body.ab-v-c .bg-primary:not(.bg-opacity-10) h4{color:#fcd34d}
+body.ab-v-c footer .text-muted,body.ab-v-c .site-header .text-muted{color:#cfe7e3 !important}
