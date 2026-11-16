@@ -5,7 +5,7 @@ A = unchanged control (plus tracking + noindex). B/C/D change copy, call-to-acti
 placement and layout. Source pages are read from the repo root; outputs are written
 next to them as <page>-a.html ... <page>-d.html. Re-running regenerates everything.
 """
-import re, sys, pathlib
+import re, sys, pathlib, hashlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 PHONE_DISPLAY, PHONE_HREF = "(833) 659-8378", "tel:18336598378"
@@ -19,6 +19,12 @@ SERVICE_PAGES = {
 }
 HUB = "practice-areas"
 VARIANTS = ["a", "b", "c", "d"]
+
+# Content hash appended to asset URLs so CDN/browser caches pick up every edit immediately.
+def asset_version(name):
+    return hashlib.sha256((ROOT / name).read_bytes()).hexdigest()[:10]
+CSS_HREF = f"ab-variants.css?v={asset_version('ab-variants.css')}"
+JS_SRC = f"ab-track.js?v={asset_version('ab-track.js')}"
 
 def call_panel(topic):
     return f'''
@@ -65,7 +71,7 @@ def head_and_body(html, page, v):
     html, n = re.subn(r'</title>', f' [Variant {v.upper()}]</title>', html, count=1)
     if n != 1: raise SystemExit(f"{page}: </title> not found")
     inject = (f'    <meta name="ab-variant" content="{v.upper()}">\n    <meta name="ab-page" content="{page}">\n'
-              '    <link rel="stylesheet" href="ab-variants.css">\n</head>')
+              f'    <link rel="stylesheet" href="{CSS_HREF}">\n</head>')
     html, n = re.subn(r'</head>', inject, html, count=1)
     if n != 1: raise SystemExit(f"{page}: </head> not found")
     html, n = re.subn(r'<body>', f'<body class="ab-v-{v}">', html, count=1)
@@ -73,7 +79,7 @@ def head_and_body(html, page, v):
     label = 'Variant D (mobile only)' if v == 'd' else f'Variant {v.upper()}'
     tail = f'    <div class="ab-badge">{label}</div>\n'
     if v == "d": tail += STICKY + "\n"
-    tail += '    <script src="ab-track.js"></script>\n</body>'
+    tail += f'    <script src="{JS_SRC}"></script>\n</body>'
     html, n = re.subn(r'</body>', tail, html, count=1)
     if n != 1: raise SystemExit(f"{page}: </body> not found")
     return html
